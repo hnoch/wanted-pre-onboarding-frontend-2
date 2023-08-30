@@ -44,7 +44,7 @@ const IssueDetail = () => {
 export default IssueDetail;
 
 const DetailWrap = styled.div`
-  padding: 10px;
+  padding: 4px;
 `;
 
 const ProfileImg = styled.img`
@@ -59,4 +59,6 @@ const ContentBox = styled.div`
   padding: 10px 0px;
   text-align: left;
   white-space: break-spaces;
+  overflow-y: auto;
+  height: calc(100vh - 220px);
 `;

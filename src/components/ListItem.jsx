@@ -66,7 +66,7 @@ const LabalWrap = styled(RowBox)`
 
 const LabelItem = styled.div`
   border-radius: 12px;
-  border: 2px solid yellow;
+  border: 2px solid #e3b341;
   background: #f8e3a1;
   font-size: 8px;
   font-weight: 600;

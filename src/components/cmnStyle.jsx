@@ -38,7 +38,7 @@ export const LoadingWrap = styled.div`
   font-size: 14px;
   font-style: italic;
   text-align: center;
-  padding: 20px 0px;
+  padding: 30px 0px;
 `;
 
 export const RowBox = styled.div`
