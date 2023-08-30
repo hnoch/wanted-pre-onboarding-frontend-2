@@ -11,6 +11,7 @@ export const getIssueListApi = async ({ owner, repo, state, sort, per_page, page
     throw new Error(error.response.data.message);
   }
 };
+
 // NOTE issue 상세정보 가져오기
 export const getIssueDetailApi = async ({ owner, repo, issue_number }) => {
   try {
