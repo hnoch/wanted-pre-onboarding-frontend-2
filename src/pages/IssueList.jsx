@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
 import { getIssueListApi } from "../apis/gitApi";
-import { ScrollBox, Title } from "../components/cmnStyle";
 import ListItem from "../components/ListItem";
+import { styled } from "styled-components";
+import { LoadingWrap, Wrap } from "../components/cmnStyle";
+import AdvItem from "../components/AdvItem";
 
-const IssueList = () => {
+const IssueList = props => {
   const [isLoading, setIsLoading] = useState(true);
   const [list, setList] = useState([]);
-  const [listParam, setListParam] = useState({
-    owner: "facebook",
-    repo: "react",
-    state: "open",
-    sort: "comments",
-    per_page: 100,
-    page: 1,
-  });
 
   useEffect(() => {
-    getIssueListApi({ owner: "facebook", repo: "react", state: "open", sort: "comments", per_page: 100, page: 1 })
+    getIssueListApi(props.param)
       .then(res => {
         if (res.status === 200) {
           setList(res.data);
@@ -29,37 +23,33 @@ const IssueList = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.info("list", list);
-  }, [list]);
-
   return (
-    <div>
-      <Title>{listParam.owner + "/" + listParam.repo}</Title>
-
+    <Wrap>
       <ScrollBox>
         {isLoading ? (
-          <div>Issue를 불러오고 있습니다...</div>
+          <LoadingWrap>Issue를 불러오고 있습니다...</LoadingWrap>
         ) : list.length !== 0 ? (
           list.map((item, idx) => {
             if ((idx + 1) % 5 === 0) {
-              return (
-                <div key={"ad_" + idx}>
-                  <span> ================= 광고 ================= </span>
-                  <br />
-                  <br />
-                </div>
-              );
+              return <AdvItem key={"ad_" + idx} />;
             } else {
               return <ListItem key={idx} item={item} />;
             }
           })
         ) : (
-          <div>Issue가 존재하지 않습니다.</div>
+          <LoadingWrap>Issue가 존재하지 않습니다.</LoadingWrap>
         )}
       </ScrollBox>
-    </div>
+    </Wrap>
   );
 };
 
 export default IssueList;
+
+export const ScrollBox = styled.div`
+  overflow-y: auto;
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  height: calc(100vh - 100px);
+`;

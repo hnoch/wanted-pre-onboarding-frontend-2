@@ -18,9 +18,8 @@ export const Inner = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
-  padding: 80px 0px 40px;
 `;
 
 export const Header = styled.div`
@@ -31,15 +30,13 @@ export const Header = styled.div`
   background-color: grey;
 `;
 
-export const ScrollBox = styled.div`
-  overflow-y: auto;
-  padding: 8px;
-  border-radius: 10px;
-  border: 2px solid grey;
-  height: calc(100vh - 170px);
+export const Wrap = styled.div`
+  padding: 80px 0px 10px;
 `;
 
-export const RowBox = styled.div`
-  display: flex;
-  align-items: center;
+export const LoadingWrap = styled.div`
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0px;
 `;
