@@ -40,3 +40,8 @@ export const LoadingWrap = styled.div`
   text-align: center;
   padding: 20px 0px;
 `;
+
+export const RowBox = styled.div`
+  display: flex;
+  align-items: center;
+`;

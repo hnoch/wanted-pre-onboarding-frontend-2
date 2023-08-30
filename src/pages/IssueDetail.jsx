@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { getIssueDetailApi } from "../apis/gitApi";
 import { useParams } from "react-router-dom";
-import { LoadingWrap, Wrap } from "../components/cmnStyle";
+import { LoadingWrap, RowBox, Wrap } from "../components/cmnStyle";
+import { styled } from "styled-components";
+import ListItem from "../components/ListItem";
 
 const IssueDetail = () => {
   const { num } = useParams();
@@ -22,11 +24,39 @@ const IssueDetail = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.info("issue", issue);
-  }, [issue]);
-
-  return <Wrap>{isLoading ? <LoadingWrap>Issue를 불러오고 있습니다...</LoadingWrap> : <div>{issue.title}</div>}</Wrap>;
+  return (
+    <Wrap>
+      {isLoading ? (
+        <LoadingWrap>Issue를 불러오고 있습니다...</LoadingWrap>
+      ) : (
+        <DetailWrap>
+          <RowBox>
+            <ProfileImg src={issue.user.avatar_url} />
+            <ListItem item={issue} disabled={true} />
+          </RowBox>
+          <ContentBox>{issue.body}</ContentBox>
+        </DetailWrap>
+      )}
+    </Wrap>
+  );
 };
 
 export default IssueDetail;
+
+const DetailWrap = styled.div`
+  padding: 10px;
+`;
+
+const ProfileImg = styled.img`
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  margin-right: 4px;
+`;
+
+const ContentBox = styled.div`
+  font-size: 14px;
+  padding: 10px 0px;
+  text-align: left;
+  white-space: break-spaces;
+`;
