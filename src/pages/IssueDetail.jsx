@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getIssueDetailApi } from "../apis/gitApi";
 import { useParams } from "react-router-dom";
-import { LoadingWrap, RowBox, Wrap } from "../components/cmnStyle";
+import { InfoWrap, RowBox, Wrap } from "../components/cmnStyle";
 import { styled } from "styled-components";
 import ListItem from "../components/ListItem";
 
@@ -27,7 +27,7 @@ const IssueDetail = () => {
   return (
     <Wrap>
       {isLoading ? (
-        <LoadingWrap>Issue를 불러오고 있습니다...</LoadingWrap>
+        <InfoWrap>Issue를 불러오고 있습니다...</InfoWrap>
       ) : (
         <DetailWrap>
           <RowBox>

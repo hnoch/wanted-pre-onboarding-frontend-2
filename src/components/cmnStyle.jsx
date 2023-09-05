@@ -34,7 +34,7 @@ export const Wrap = styled.div`
   padding: 80px 0px 10px;
 `;
 
-export const LoadingWrap = styled.div`
+export const InfoWrap = styled.div`
   font-size: 14px;
   font-style: italic;
   text-align: center;

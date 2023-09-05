@@ -25,7 +25,10 @@ const ListItem = props => {
           ))}
         </LabalWrap>
       </InfoBox>
-      <div>코멘트 : {props.item.comments}</div>
+      <RightBox>
+        <img src={"https://cdn2.iconfinder.com/data/icons/medical-healthcare-26/28/Chat-2-512.png"} />
+        <div>{props.item.comments}</div>
+      </RightBox>
     </ListWrap>
   );
 };
@@ -71,4 +74,15 @@ const LabelItem = styled.div`
   font-size: 8px;
   font-weight: 600;
   padding: 4px 8px;
+`;
+
+const RightBox = styled(RowBox)`
+  > img {
+    width: 16px;
+    height: 16px;
+  }
+  > div {
+    margin-left: 4px;
+    font-size: 12px;
+  }
 `;
